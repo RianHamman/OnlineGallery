@@ -1,21 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using OnlineGallery.Infrastructure;
 using OnlineGallery.Models;
+using OnlineGallery.ViewModels.ImageViewModels;
 using System.Diagnostics;
 
 namespace OnlineGallery.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUnitWork _unitwork;
+        private readonly IMapper _mapper;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUnitWork unitWork, IMapper mapper) //deafualt home controller constructor.
         {
-            _logger = logger;
+            _unitwork = unitWork;
+            _mapper = mapper;
         }
 
-        public IActionResult Index()
+        public IActionResult Index() //getting all of the images and albums and converting it into a viewmodel 
         {
-            return View();
+            var model = _unitwork.AlbumRepo.GetAll();
+            var vm = _mapper.Map<List<ImageViewModel>>(model);
+
+            return View(vm);
         }
 
         public IActionResult Privacy()

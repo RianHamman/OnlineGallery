@@ -1,8 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<OnlineGallery.ViewModels.ImageViewModels.ImageViewModel>
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container"> @*used to show images on browser.*@
+    <div class="row">
+        @foreach(var item in Model)
+        {
+            <div class="col-m-3 ">
+                <a href="@("/uploads/" + item.Url)" target="_parent">
+                    <img src="@("/uploads/" + item.Url)" alt="Lights" class="img-thumbnail">    
+                </a>
+            </div>
+        }
+    </div>
 </div>
