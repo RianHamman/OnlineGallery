@@ -22,7 +22,7 @@ using OnlineGallery.Areas.Identity.Data;
 
 namespace OnlineGallery.Areas.Identity.Pages.Account
 {
-    namespace AccountApplication.Areas.Identity.Pages.Account
+    namespace OnlineGallery.Areas.Identity.Pages.Account
     {
         [AllowAnonymous]
         public class RegisterModel : PageModel
