@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using OnlineGallery.Data;
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("OnlineGalleryDbContextConnection");builder.Services.AddDbContext<OnlineGalleryDbContext>(options =>
+    options.UseSqlServer(connectionString));builder.Services.AddDefaultIdentity<OnlineGalleryUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<OnlineGalleryDbContext>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -17,7 +22,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

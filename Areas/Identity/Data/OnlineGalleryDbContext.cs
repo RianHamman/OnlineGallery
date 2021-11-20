@@ -1,0 +1,22 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using OnlineGallery.Areas.Identity.Data;
+
+namespace OnlineGallery.Data;
+
+public class OnlineGalleryDbContext : IdentityDbContext<OnlineGalleryUser>
+{
+    public OnlineGalleryDbContext(DbContextOptions<OnlineGalleryDbContext> options)
+        : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+        // Customize the ASP.NET Identity model and override the defaults if needed.
+        // For example, you can rename the ASP.NET Identity table names and more.
+        // Add your customizations after calling base.OnModelCreating(builder);
+    }
+}
