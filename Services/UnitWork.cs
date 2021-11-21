@@ -1,4 +1,8 @@
-﻿using OnlineGallery.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using OnlineGallery.Data;
 using OnlineGallery.Infrastructure;
 
 namespace OnlineGallery.Services
@@ -6,7 +10,6 @@ namespace OnlineGallery.Services
     public class UnitWork : IUnitWork //used to combine the Album and image repo services. Implamented by using the Interface IUnitWork. 
     {
         private readonly ctx _ctx;
-
         private IAlbumRepo _albumRepo;
         private IImageRepo _imageRepo;
         private readonly IHostEnvironment _hostEnviorment; 

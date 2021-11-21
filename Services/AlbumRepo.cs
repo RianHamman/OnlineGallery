@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using OnlineGallery.Data;
 using OnlineGallery.Infrastructure;
 using OnlineGallery.Models;
@@ -25,10 +29,10 @@ namespace OnlineGallery.Services
             return _ctx.Album.ToList();
         }
 
-        //public async Task<List<Album>> GetAllAsync() //Create an async list of all the albums. 
-        //{
-        //    return (await _ctx.Album.ToListAsync());
-        //}
+        public async Task<List<Album>> GetAllAsync() //Create an async list of all the albums. 
+        {
+            return (await _ctx.Album.ToListAsync());
+        }
 
         public Album GetById(int Id) //get all of the albums by id in the context by id. 
         {
