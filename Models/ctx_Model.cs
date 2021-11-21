@@ -8,26 +8,13 @@ namespace OnlineGallery.Models
 {
     public class ctx_Model
     {
-        public class ctx : DbContext
+        public class cxt_context : DbContext
         {
-            public ctx(DbContextOptions<ctx> options) : base(options)
+            public cxt_context(DbContextOptions<cxt_context> options) : base(options)
             { }
 
             public DbSet<Album> Album { get; set; }
             public DbSet<Image> Image { get; set; }
-        }
-        public class Album
-        {
-            public int Id { get; set; }
-            public string Title { get; set; }
-        }
-
-        public class Image
-        {
-            public int Id { get; set; }
-            public string Url { get; set; }
-            //public IFormFile File { get; set; }
-            public string AlbumTitle { get; set; }
         }
     }
 }

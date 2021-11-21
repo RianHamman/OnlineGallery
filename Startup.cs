@@ -17,6 +17,7 @@ using OnlineGallery.Infrastructure;
 using OnlineGallery.Services;
 using System.Configuration;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
+using OnlineGallery.Models;
 
 namespace OnlineGallery
 {
@@ -39,14 +40,18 @@ namespace OnlineGallery
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<ctx>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //used to link db in startup. 
+            services.AddMvc();
+            var connection = @"Server=(localdb)\\mssqllocaldb;Database=OnlineGalleryProject;Trusted_Connection=True;MultipleResultSets=True";
+            services.AddDbContext<ctx_Model>(options => options.UseSqlServer(connection));
+
+            /*services.AddDbContext<ctx>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //used to link db in startup. 
             services.AddTransient<IUnitWork, UnitWork>();
             var config = new AutoMapper.MapperConfiguration(cfg => 
             {
                 cfg.AddProfile(new MyProfile());
             });
             var mapper = config.CreateMapper();
-            services.AddSingleton(mapper); 
+            services.AddSingleton(mapper); */
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
