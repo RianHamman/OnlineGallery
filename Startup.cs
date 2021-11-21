@@ -18,6 +18,7 @@ using OnlineGallery.Services;
 using System.Configuration;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using OnlineGallery.Models;
+using static OnlineGallery.Models.ctx_Model;
 
 namespace OnlineGallery
 {
@@ -42,7 +43,7 @@ namespace OnlineGallery
 
             services.AddMvc();
             var connection = @"Server=(localdb)\\mssqllocaldb;Database=OnlineGalleryProject;Trusted_Connection=True;MultipleResultSets=True";
-            services.AddDbContext<ctx_Model>(options => options.UseSqlServer(connection));
+            services.AddDbContext<cxt_context>(options => options.UseSqlServer(connection));
 
             /*services.AddDbContext<ctx>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //used to link db in startup. 
             services.AddTransient<IUnitWork, UnitWork>();
