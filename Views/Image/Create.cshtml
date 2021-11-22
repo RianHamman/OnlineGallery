@@ -8,6 +8,39 @@
 
 <h4>CreateImageViewModel</h4>
 <hr />
+
+<div class="container body-context">
+    <div class="row create-container">
+        <div class="form-check drop-shadow"
+            <form asp-action="Create"
+                method = "post"
+                enctype ="multipart/form-data"
+                id="create-form">
+                <div class="form-group">
+                    <label asp-for="AlbumId"></label>
+                    <input asp-for="AlbumId" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Tags"></label>
+                    <input asp-for="Tags" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Geolocation"></label>
+                    <input asp-for="Geolocation" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedBy"></label>
+                    <input asp-for="CreatedBy" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CreatedDate"></label>
+                    <input asp-for="CreatedDate" class="form-control"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
