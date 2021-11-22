@@ -40,7 +40,11 @@ namespace OnlineGallery
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<ctx>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //used to link db in startup. 
+            services.AddMvc();
+            var connection = @"Server=(localdb)\\mssqllocaldb;Database=OnlineGalleryProject;Trusted_Connection=True;MultipleResultSets=True";
+            services.AddDbContext<MyContext>(options => options.UseSqlServer(connection));
+            //services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            /*services.AddDbContext<ctx>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //used to link db in startup. 
             services.AddTransient<IUnitWork, UnitWork>();
             var config = new AutoMapper.MapperConfiguration(cfg => 
             {

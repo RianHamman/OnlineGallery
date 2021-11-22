@@ -11,9 +11,9 @@ namespace OnlineGallery.Services
 {
     public class ImageRepo : IImageRepo //implamented by the interface for Image repo.
     {
-        private readonly ctx _ctx; //used to directly comm with the db.
+        private readonly MyContext _ctx; //used to directly comm with the db.
 
-        public ImageRepo(ctx ctx) //constructor method for Image Repo. 
+        public ImageRepo(MyContext ctx) //constructor method for Image Repo. 
         {
             _ctx = ctx;
         }

@@ -11,9 +11,9 @@ namespace OnlineGallery.Services
 {
     public class AlbumRepo : IAlbumRepo //implamented by the interface for Album repo. 
     {
-        private readonly ctx _ctx; //used to directly comm with the db. 
+        private readonly MyContext _ctx; //used to directly comm with the db. 
 
-        public AlbumRepo(ctx ctx) //context constructor. 
+        public AlbumRepo(MyContext ctx) //context constructor. 
         {
             _ctx = ctx;
         }
