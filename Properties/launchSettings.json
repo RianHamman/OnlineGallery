@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -14,14 +14,16 @@
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7193;http://localhost:5193",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "AZURE_USERNAME": "32521723@student365.msfed.nwu.ac.za"
       }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "AZURE_USERNAME": "32521723@student365.msfed.nwu.ac.za"
       }
     }
   }

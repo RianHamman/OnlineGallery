@@ -14,6 +14,14 @@ namespace OnlineGallery.Controllers
     {
         private readonly IUnitWork _unitWork;
         private readonly IMapper _mapper;
+        private IConfiguration _config;
+        private string AzureConnectionString { get; }
+
+        public ImageController(IConfiguration config)
+        {
+            _config = config;
+            AzureConnectionString = _config["AzureStorageConnectionString"];
+        }
 
         public ImageController(IUnitWork unitWork, IMapper mapper)
         {
