@@ -1,36 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Identity;
 using OnlineGallery.Areas.Identity.Data;
 using OnlineGallery.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using OnlineGallery.Automapper;
-using OnlineGallery.Data;
-using OnlineGallery.Infrastructure;
-using OnlineGallery.Services;
-using System.Configuration;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
-using OnlineGallery.Models;
-using static OnlineGallery.Models.ctx_Model;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Hosting;
 
 namespace OnlineGallery
 {
