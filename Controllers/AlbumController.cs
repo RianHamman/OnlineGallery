@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineGallery.Infrastructure;
 using OnlineGallery.Models;
@@ -10,6 +11,7 @@ using OnlineGallery.ViewModels.AlbumViewModels;
 
 namespace OnlineGallery.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AlbumController : Controller
     {
         private readonly IUnitWork _unitWork;

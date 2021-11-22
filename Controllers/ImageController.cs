@@ -118,6 +118,22 @@ namespace OnlineGallery.Controllers
 
         }
 
+        public async Task<IActionResult> DownloadFile(string filePath)
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filePath);
+            var memory = new MemoryStream();
+
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            var contentType = "APPLICATION/octet-stream";
+            var fileName = Path.GetFileName(path);
+
+            return File(memory, contentType, fileName);
+        }
+
         public ActionResult Delete(int Id)
         {
             var model = _unitWork.ImageRepo.GetById(Id);
