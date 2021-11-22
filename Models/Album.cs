@@ -9,6 +9,6 @@ namespace OnlineGallery.Models
     {
         public int Id { get; set; }
         public string AlbumName { get; set; }
-        public List<Image> Media { get; set; } = new List<Image>();
+        public List<Image> Images { get; set; } = new List<Image>();
     }
 }
