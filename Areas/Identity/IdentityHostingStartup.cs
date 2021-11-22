@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 [assembly: HostingStartup(typeof(OnlineGallery.Areas.Identity.IdentityHostingStartup))]
 namespace OnlineGallery.Areas.Identity
 {
-    public class IdentityHostingStartup : Microsoft.AspNetCore.Hosting.IHostingStartup
+    public class IdentityHostingStartup : IHostingStartup
     {
         public void Configure(IWebHostBuilder builder)
         {
