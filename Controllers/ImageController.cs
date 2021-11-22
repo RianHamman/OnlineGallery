@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using OnlineGallery.Data;
 using OnlineGallery.Infrastructure;
 using OnlineGallery.Models;
 using OnlineGallery.ViewModels.ImageViewModels;
@@ -26,6 +28,25 @@ namespace OnlineGallery.Controllers
             var image = _unitWork.ImageRepo.GetAll();
             var vm = _mapper.Map<List<ImageViewModel>>(image);
             return View(vm);
+        }
+
+        private readonly MyContext _db;
+
+        public ImageController(MyContext db)
+        {
+            _db = db;
+        }
+
+        public async Task<IActionResult> Index(string Search)
+        {
+            ViewData["Getdetails"] = Search;
+            var query = from x in _db.Image select x;
+            if(!String.IsNullOrEmpty(Search))
+            {
+                query = query.Where(x => x.Tags.Contains(Search) || x.Geolocation.Contains(Search) || x.CreatedBy.Contains(Search));
+            }
+
+            return View(await query.AsNoTracking().ToListAsync());
         }
 
         public ActionResult Details(int Id)

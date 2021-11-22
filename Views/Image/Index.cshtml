@@ -9,6 +9,13 @@
     <p>
         <a asp-action="Create"> New</a>
     </p>
+    <form method="get" asp-action="Index">
+        <p>
+            <input type = "search" placeholder="Enter Geolocation, Captured By or Tags to search images" value="@ViewData["Getdetails"]" name="Search" style="width:500px;"/>
+            <input type = "submit" value="Search" class = "btn btn-primary"/>
+            <a asp-action="Index">Get All Images</a>
+        </p>
+    </form>
     <table class="table">
         <thread>
             <tr>
@@ -18,7 +25,18 @@
                 <th>
                     @Html.DisplayNameFor(model => model.AlbumTitle)
                 </th>
-                <th></th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tags)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Geolocation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </th>
             </tr>
         </thread>
         <tbody>
