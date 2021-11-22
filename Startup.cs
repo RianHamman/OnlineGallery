@@ -62,6 +62,7 @@ namespace OnlineGallery
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper); */
+
             services.AddControllersWithViews();
             services.AddRazorPages();//razor pages support/uses
         }

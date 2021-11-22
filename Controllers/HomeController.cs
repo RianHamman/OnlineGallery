@@ -16,6 +16,12 @@ namespace OnlineGallery.Controllers
     {
         private readonly IUnitWork _unitwork;
         private readonly IMapper _mapper;
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
 
         public HomeController(IUnitWork unitWork, IMapper mapper) //home controller constructor.
         {

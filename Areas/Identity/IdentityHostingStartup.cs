@@ -15,14 +15,14 @@ namespace OnlineGallery.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => 
-            { 
+            builder.ConfigureServices((context, services) =>
+            {
                 services.AddDbContext<OnlineGalleryDbContext>(options =>
                 options.UseSqlServer(context.Configuration.GetConnectionString("OnlineGalleryDbContextConnection")));
 
                 services.AddDefaultIdentity<OnlineGalleryUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<OnlineGalleryDbContext>();
-            });  
+            });
         }
     }
 }

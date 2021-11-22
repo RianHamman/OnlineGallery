@@ -19,4 +19,3 @@ public class OnlineGalleryUser : IdentityUser
     [Column(TypeName = "nvarchar(30)")]//datatipe
     public string LastName { get; set; }//field
 }
-
