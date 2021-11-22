@@ -1,4 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +25,13 @@ using System.Configuration;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using OnlineGallery.Models;
 using static OnlineGallery.Models.ctx_Model;
+using AzureImageGallery.Data;
+using Microsoft.EntityFrameworkCore;
+using AzureImageGallery.Services;
+using AzureImageGallery.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Hosting;
+using Azure.Storage.Blobs;*/
 
 namespace OnlineGallery
 {
@@ -48,11 +61,13 @@ namespace OnlineGallery
             /*services.AddDbContext<ctx>(Options => Options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); //used to link db in startup. 
             services.AddTransient<IUnitWork, UnitWork>();
             var config = new AutoMapper.MapperConfiguration(cfg => 
-            {
+        {
                 cfg.AddProfile(new MyProfile());
             });
             var mapper = config.CreateMapper();
             services.AddSingleton(mapper); */
+            services.AddControllersWithViews();
+            services.AddRazorPages();//razor pages support/uses
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -64,6 +79,7 @@ namespace OnlineGallery
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -71,9 +87,19 @@ namespace OnlineGallery
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseMvc(routes =>
+            app.UseEndpoints(endpoints =>
             {
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();//razor page location
             });
         }
     }
