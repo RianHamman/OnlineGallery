@@ -25,13 +25,9 @@ using System.Configuration;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using OnlineGallery.Models;
 using static OnlineGallery.Models.ctx_Model;
-using AzureImageGallery.Data;
 using Microsoft.EntityFrameworkCore;
-using AzureImageGallery.Services;
-using AzureImageGallery.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Hosting;
-using Azure.Storage.Blobs;*/
 
 namespace OnlineGallery
 {
@@ -93,9 +89,12 @@ namespace OnlineGallery
             app.UseAuthorization();
 
             app.UseMvc(routes =>
-            app.UseEndpoints(endpoints =>
             {
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
