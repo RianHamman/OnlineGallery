@@ -29,9 +29,4 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\Album\" />
-    <Folder Include="Views\Image\" />
-  </ItemGroup>
-
 </Project>

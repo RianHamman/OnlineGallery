@@ -16,7 +16,7 @@ namespace OnlineGallery.Controllers
         private readonly IUnitWork _unitwork;
         private readonly IMapper _mapper;
 
-        public HomeController(IUnitWork unitWork, IMapper mapper) //deafualt home controller constructor.
+        public HomeController(IUnitWork unitWork, IMapper mapper) //home controller constructor.
         {
             _unitwork = unitWork;
             _mapper = mapper;
